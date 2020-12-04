@@ -1,0 +1,54 @@
+﻿<Window x:Class="WpfTicketera.AltasTickets"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTicketera"
+        mc:Ignorable="d"
+        Title="Gestion de Tickets" Height="467.398" Width="492.655" Loaded="Window_Loaded_1">
+	<Canvas Margin="0,0,307,-5">
+		<GroupBox Header="Datos de  Tickets" Canvas.Left="16" Canvas.Top="10" Height="124" Width="461" RenderTransformOrigin="0.5,0.5" Foreground="Black">
+			<GroupBox.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="-0.202"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</GroupBox.RenderTransform>
+			<Grid Margin="27,11,21,6" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="-0.008"/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Grid.RenderTransform>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="120"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition Height="40"></RowDefinition>
+				</Grid.RowDefinitions>
+				<Label Grid.Column="0" Grid.Row="0" Content="Nro. Ticket" HorizontalAlignment="Right" Margin="0 0 5 0" Width="67"></Label>
+				<Label Grid.Column="0" Grid.Row="1" Content="Cliente" HorizontalAlignment="Right" Margin="0 0 5 0" Width="47"></Label>
+
+				<TextBox Grid.Column="1" Grid.Row="0" Name="txtNroTicket" Width="188" HorizontalAlignment="Left" IsReadOnly="True" Grid.ColumnSpan="2" Margin="0,10,0,6" IsEnabled="True"/>
+				<ComboBox Grid.Column="1" Grid.Row="1" Name="cboCliente" Grid.ColumnSpan="2" Margin="0,3,93,10"/>
+
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Header="Tickets" Canvas.Left="10" Canvas.Top="141" Height="215" Width="466">
+			<DataGrid Name="dgTickets" MouseDoubleClick="dgTickets_MouseDoubleClick"  Margin="0,0,0,1"></DataGrid>
+		</GroupBox>
+
+		<Button Name="btnEliminar" Content="Eliminar" MouseDoubleClick="btnEliminar_MouseDoubleClick_1" Canvas.Left="192" Canvas.Top="374" Height="28" Background="#FF403F3F" Foreground="White" Width="75"></Button>
+		<Button Name="btnModificar" Content="Modificar" MouseDoubleClick="btnModificar_MouseDoubleClick_1" Canvas.Left="291" Canvas.Top="374"  Height="28" Background="#FF403F3F" Foreground="White" Width="74"></Button>
+		<Button Name="btnGuardar" Content="Guardar" Canvas.Left="385" MouseDoubleClick="btnGuardar_MouseDoubleClick_1" Canvas.Top="374"  Height="28" RenderTransformOrigin="0.335,-3.087" Background="#FF403F3F" Foreground="White" Width="79"></Button>
+	</Canvas>
+</Window>

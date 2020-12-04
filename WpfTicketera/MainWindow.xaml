@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfTicketera.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTicketera"
+        mc:Ignorable="d"
+        Title="Ticket Fresh" Height="600" Width="1200" ResizeMode="CanResizeWithGrip" WindowStyle="SingleBorderWindow" Background="#222" WindowStartupLocation="CenterScreen">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition Width="350"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<StackPanel Orientation="Vertical" Grid.Column="0" Background="#333">
+			<Label HorizontalAlignment="Center" Margin="0,60,0,0" Foreground="#eee" FontSize="40" Content="BIENVENIDO"/>
+			<Label FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="#eeeE" Content="Sistema de Gestión de Tickets y Caja"/>
+			<Separator Width="600" Background="#eee"></Separator>
+
+			<DockPanel Height="200" Margin="0,10,0,0">
+				<Viewbox Margin="0,0,0,-158">
+				</Viewbox>
+			</DockPanel>
+
+
+
+		</StackPanel>
+
+		<StackPanel Grid.Column="1" Background="#222" Orientation="Vertical">
+
+			<Border Background="#888" Margin="20,80,20,0" CornerRadius="5">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="200"></ColumnDefinition>
+						<ColumnDefinition></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+
+					<Button Grid.Column="0" x:Name="NewProjectButton" BorderBrush="#888" Background="#333" Padding="20" Foreground="White" Content="TICKETS" Grid.ColumnSpan="2" Click="NewProjectButton_Click"/>
+
+				</Grid>
+			</Border>
+
+			<Border Background="#888" Margin="20,20,20,0" CornerRadius="5">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="200"></ColumnDefinition>
+						<ColumnDefinition Width="110"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+
+					<Button Grid.Column="0" BorderBrush="#888" Background="#333" Padding="20" Foreground="White" Content="CLIENTES" Grid.ColumnSpan="2" Click="Button_Click"/>
+
+					<Viewbox Height="40" Grid.Column="1">
+
+					</Viewbox>
+				</Grid>
+			</Border>
+
+			<Border Background="#888" Margin="20,20,20,0" CornerRadius="5">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="200"></ColumnDefinition>
+						<ColumnDefinition></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+
+					<Button Grid.Column="0" BorderBrush="#888" Background="#333" Padding="20" Foreground="White" Content="SALIR" Grid.ColumnSpan="2" Click="Button_Click_1"/>
+
+					<Viewbox Height="40" Grid.Column="1">
+					</Viewbox>
+				</Grid>
+			</Border>
+			<Grid>
+				<Label FontSize="20" HorizontalAlignment="Center" Margin="74,20,70,349" Foreground="#eeeE" Content="Mantente conectado" Width="206"/>
+				<Label FontSize="20" HorizontalAlignment="Center" Margin="49,47,46,332" Foreground="#eeeE" Content="Sigenos en nuestras Redes." Width="255"/>
+				<Image Source="Multimedia\58e91965eb97430e819064f5.png" Margin="10,89,238,200"></Image>
+				<Image Source="Multimedia\58e9196deb97430e819064f6.png" Margin="239,89,25,200"></Image>
+				<Image Source="Multimedia\58e9197deb97430e819064f8.png" Margin="128,89,133,200"></Image>
+			</Grid>
+
+		</StackPanel>
+
+	</Grid>
+</Window>

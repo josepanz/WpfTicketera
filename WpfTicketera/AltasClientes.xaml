@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfTicketera.AltasClientes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTicketera"
+        mc:Ignorable="d"
+        Title="AltasClientes" Height="450" Width="800" Loaded="Window_Loaded">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition Width="165"></ColumnDefinition>
+			<ColumnDefinition Width="431*"></ColumnDefinition>
+			<ColumnDefinition Width="96*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<Label Content="Id" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,29" Height="26"></Label>
+		<Label Content="Nombre" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,29" Height="26"></Label>
+		<Label Content="Apellido" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,28,0,30" Height="26"></Label>
+		<Label Content="Nro.Doc" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,29" Height="26"></Label>
+
+		<TextBox Name="txtId" Grid.Row="0" Grid.Column="1" Margin="5,27"/>
+		<TextBox Name="txtNombre" Grid.Row="1" Grid.Column="1" Margin="5,27"/>
+		<TextBox Name="txtApellido" Grid.Row="2" Grid.Column="1" Margin="5,26,5,28"/>
+		<TextBox Name="txtNroDoc" Grid.Row="3" Grid.Column="1" Margin="5,27"/>
+
+		<ListBox Name="lstClientes"  Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="2" SelectionChanged="lstClientes_SelectionChanged" Margin="10,0,0,0">
+
+		</ListBox>
+
+		<StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="320">
+			<Button Background="#FF403F3F" Foreground="White"  Name="btnAgregar"  Content="Agregar" Grid.Row="4" Grid.Column="1" Height="30" Width="70" Margin="5" Click="btnAgregar_Click"></Button>
+			<Button Background="#FF403F3F" Foreground="White"  Name="btnModificar"  Content="Modificar" Grid.Row="4" Grid.Column="1" Height="30" Width="70" Margin="5" Click="btnModificar_Click"></Button>
+			<Button Background="#FF403F3F" Foreground="White"  Name="btnEliminar"  Content="Eliminar" Grid.Row="4" Grid.Column="1" Height="30" Width="70" Margin="5" Click="btnEliminar_Click"></Button>
+			<Button Background="#FF403F3F" Foreground="White"  Name="btnLimpiar"  Content="Limpiar" Grid.Row="4" Grid.Column="1" Height="30" Width="70" Margin="5" Click="btnLimpiar_Click"></Button>
+		</StackPanel>
+
+	</Grid>
+</Window>
