@@ -1,0 +1,11 @@
+$ git init
+
+$ git config user.name "KarenLiuzzi"
+
+$ git config user.email "Liuzzi.karen@gmail.com"
+
+$ git remote add origin https://github.com/josepanz/WpfTicketera.git
+
+$ gil pull origin master
+
+

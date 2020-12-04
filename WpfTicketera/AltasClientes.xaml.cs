@@ -49,25 +49,33 @@ namespace WpfTicketera
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            Cliente c = new Cliente();
-            c.Nombre = txtNombre.Text;
-            c.Apellido = txtApellido.Text;
-            c.CI = txtNroDoc.Text;
+            if (validarDatos() is true)
+            {
+                Cliente c = new Cliente();
+                c.Nombre = txtNombre.Text;
+                c.Apellido = txtApellido.Text;
+                c.CI = txtNroDoc.Text;
 
-            await Cliente.AgregarCliente(c);
-            ObtenerDatos();
+                await Cliente.AgregarCliente(c);
+                ObtenerDatos();
+                Limpiar();
+            }
         }
 
         private async void btnModificar_Click(object sender, RoutedEventArgs e)
         {
             if (lstClientes.SelectedItem != null)
             {
-                Cliente clienteSeleccionado = (Cliente)lstClientes.SelectedItem;
-                clienteSeleccionado.Nombre = txtNombre.Text;
-                clienteSeleccionado.Apellido = txtApellido.Text;
-                clienteSeleccionado.CI = txtNroDoc.Text;
-                await Cliente.ModificarCliente(clienteSeleccionado);
-                ObtenerDatos();
+                if (validarDatos()== true)
+                {
+                    Cliente clienteSeleccionado = (Cliente)lstClientes.SelectedItem;
+                    clienteSeleccionado.Nombre = txtNombre.Text;
+                    clienteSeleccionado.Apellido = txtApellido.Text;
+                    clienteSeleccionado.CI = txtNroDoc.Text;
+                    await Cliente.ModificarCliente(clienteSeleccionado);
+                    ObtenerDatos();
+                    Limpiar();
+                }
             }
             else
                 MessageBox.Show("Debe seleccionar primeramente el cliente a modificar ");
@@ -80,12 +88,41 @@ namespace WpfTicketera
                 Cliente clienteSeleccionada = (Cliente)lstClientes.SelectedItem;
                 await Cliente.EliminarCliente(clienteSeleccionada);
                 ObtenerDatos();
+                Limpiar();
             }
             else
                 MessageBox.Show("Debe seleccionar primeramente el cliente a eliminar ");
         }
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
+        }
+
+        private bool validarDatos()
+        {
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Debe ingresar el Nombre!");
+                return false;
+            }
+
+            if (txtApellido.Text == "")
+            {
+                MessageBox.Show("Debe ingresar el Apellido!");
+                return false;
+            }
+
+            if (txtNroDoc.Text == "")
+            {
+                MessageBox.Show("Debe ingresar el Nro. de Documento!");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void Limpiar()
         {
             txtId.Text = string.Empty;
             txtNombre.Text = string.Empty;

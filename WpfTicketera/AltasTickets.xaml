@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTicketera"
         mc:Ignorable="d"
-        Title="Gestion de Tickets" Height="467.398" Width="492.655" Loaded="Window_Loaded_1">
-	<Canvas Margin="0,0,307,-5">
-		<GroupBox Header="Datos de  Tickets" Canvas.Left="16" Canvas.Top="10" Height="124" Width="461" RenderTransformOrigin="0.5,0.5" Foreground="Black">
+        Title="Gestion de Tickets" Height="467.398" Width="492.655" Loaded="Window_Loaded_1" Background="#FF333333" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True">
+	<Canvas Margin="0,0,307,-5" Background="#FF333333">
+        <GroupBox Header="Datos de  Tickets" Canvas.Left="16" Canvas.Top="10" Height="124" Width="461" RenderTransformOrigin="0.5,0.5" Foreground="White">
 			<GroupBox.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
@@ -34,16 +34,16 @@
 					<RowDefinition/>
 					<RowDefinition Height="40"></RowDefinition>
 				</Grid.RowDefinitions>
-				<Label Grid.Column="0" Grid.Row="0" Content="Nro. Ticket" HorizontalAlignment="Right" Margin="0 0 5 0" Width="67"></Label>
-				<Label Grid.Column="0" Grid.Row="1" Content="Cliente" HorizontalAlignment="Right" Margin="0 0 5 0" Width="47"></Label>
+                <Label Grid.Column="0" Grid.Row="0" Content="Nro. Ticket" HorizontalAlignment="Right" Margin="0,10,5,0" Width="67" Foreground="#eee" ></Label>
+                <Label Grid.Column="0" Grid.Row="1" Content="Cliente" HorizontalAlignment="Right" Margin="0 0 5 0" Width="47" Foreground="#eee" ></Label>
 
-				<TextBox Grid.Column="1" Grid.Row="0" Name="txtNroTicket" Width="188" HorizontalAlignment="Left" IsReadOnly="True" Grid.ColumnSpan="2" Margin="0,10,0,6" IsEnabled="True"/>
+				<TextBox Grid.Column="1" Grid.Row="0" Name="txtNroTicket" Width="188" HorizontalAlignment="Left" IsReadOnly="True" Grid.ColumnSpan="2" Margin="0,10,0,6" IsEnabled="False"/>
 				<ComboBox Grid.Column="1" Grid.Row="1" Name="cboCliente" Grid.ColumnSpan="2" Margin="0,3,93,10"/>
 
 			</Grid>
 		</GroupBox>
 
-		<GroupBox Header="Tickets" Canvas.Left="10" Canvas.Top="141" Height="215" Width="466">
+        <GroupBox Header="Tickets" Canvas.Left="10" Canvas.Top="141" Height="215" Width="466" Foreground="#eee" >
 			<DataGrid Name="dgTickets" MouseDoubleClick="dgTickets_MouseDoubleClick"  Margin="0,0,0,1"></DataGrid>
 		</GroupBox>
 

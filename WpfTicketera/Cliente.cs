@@ -67,7 +67,7 @@ namespace WpfTicketera
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage respuesta = await client.PostAsJsonAsync("api/ClientesApi", p); //Aqui va el Endpoint api/Personas, junto con el Objeto Persona (p), ya que el objeto tiene en los valores de sus atributos, los valores para crear un nuevo recurso Persona.
+                HttpResponseMessage respuesta = await client.PostAsJsonAsync("api/ClientesApi", p); 
                 return respuesta.IsSuccessStatusCode;
             }
         }
