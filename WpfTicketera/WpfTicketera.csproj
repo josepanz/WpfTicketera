@@ -79,16 +79,16 @@
     <Compile Include="AltasTickets.xaml.cs">
       <DependentUpon>AltasTickets.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AspNetRoles.cs">
+    <Compile Include="AspNetRole.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserClaims.cs">
+    <Compile Include="AspNetUser.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserLogins.cs">
+    <Compile Include="AspNetUserClaim.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUsers.cs">
+    <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Caja.cs">
@@ -97,6 +97,7 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClienteAPI.cs" />
     <Compile Include="Contacto.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>

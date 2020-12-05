@@ -26,7 +26,7 @@ namespace WpfTicketera
 
         private async void ObtenerDatos()
         {
-            List<Cliente> lista = await Cliente.ObtenerTodos();
+            List<ClienteAPI> lista = await ClienteAPI.ObtenerTodos();
             lstClientes.ItemsSource = lista;
         }
 
@@ -34,31 +34,38 @@ namespace WpfTicketera
         {
             if (lstClientes.SelectedItem != null)
             {
-                Cliente clienteSeleccionado = (Cliente)lstClientes.SelectedItem;
+                ClienteAPI clienteSeleccionado = (ClienteAPI)lstClientes.SelectedItem;
                 txtId.Text = clienteSeleccionado.Id_Cliente.ToString();
                 txtNombre.Text = clienteSeleccionado.Nombre;
                 txtApellido.Text = clienteSeleccionado.Apellido;
                 txtNroDoc.Text = clienteSeleccionado.CI;
+                btnEliminar.IsEnabled = true;
+                btnModificar.IsEnabled = true;
+                btnAgregar.IsEnabled = false;
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ObtenerDatos();
+            btnEliminar.IsEnabled = false;
+            btnModificar.IsEnabled = false;
         }
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             if (validarDatos() is true)
             {
-                Cliente c = new Cliente();
+                ClienteAPI c = new ClienteAPI();
                 c.Nombre = txtNombre.Text;
                 c.Apellido = txtApellido.Text;
                 c.CI = txtNroDoc.Text;
 
-                await Cliente.AgregarCliente(c);
+                await ClienteAPI.AgregarCliente(c);
                 ObtenerDatos();
                 Limpiar();
+                btnEliminar.IsEnabled = false;
+                btnModificar.IsEnabled = false;
             }
         }
 
@@ -68,13 +75,19 @@ namespace WpfTicketera
             {
                 if (validarDatos()== true)
                 {
-                    Cliente clienteSeleccionado = (Cliente)lstClientes.SelectedItem;
+                    btnModificar.IsEnabled = true;
+                    btnEliminar.IsEnabled = true;
+                    btnAgregar.IsEnabled = false;
+                    ClienteAPI clienteSeleccionado = (ClienteAPI)lstClientes.SelectedItem;
                     clienteSeleccionado.Nombre = txtNombre.Text;
                     clienteSeleccionado.Apellido = txtApellido.Text;
                     clienteSeleccionado.CI = txtNroDoc.Text;
-                    await Cliente.ModificarCliente(clienteSeleccionado);
+                    await ClienteAPI.ModificarCliente(clienteSeleccionado);
                     ObtenerDatos();
                     Limpiar();
+                    btnModificar.IsEnabled = false;
+                    btnEliminar.IsEnabled = false;
+                    btnAgregar.IsEnabled = true;
                 }
             }
             else
@@ -85,8 +98,8 @@ namespace WpfTicketera
         {
             if (lstClientes.SelectedItem != null)
             {
-                Cliente clienteSeleccionada = (Cliente)lstClientes.SelectedItem;
-                await Cliente.EliminarCliente(clienteSeleccionada);
+                ClienteAPI clienteSeleccionada = (ClienteAPI)lstClientes.SelectedItem;
+                await ClienteAPI.EliminarCliente(clienteSeleccionada);
                 ObtenerDatos();
                 Limpiar();
             }

@@ -29,7 +29,6 @@ namespace WpfTicketera
         {
             InitializeComponent();
             datos = new BD_TicketEntities();
-            ObtenerDatosTicket();
         }
 
         private void dgTickets_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -39,7 +38,8 @@ namespace WpfTicketera
                 Ticket t = (Ticket)dgTickets.SelectedItem;
                 txtNroTicket.Text = t.Nro_Ticket.ToString();
                 cboCliente.SelectedItem = t.Cliente;
-                //intIdCaja = (int)t.Id_Caja;
+                intIdCaja = (int)t.Id_Caja;
+                nroLetraTicket = t.Nro_Ticket;
             }
         }
 
@@ -47,7 +47,7 @@ namespace WpfTicketera
         {
             try
             {
-                dgTickets.ItemsSource = datos.Ticket.ToList();
+                dgTickets.ItemsSource = datos.Tickets.ToList();
             }
             catch (Exception ex)
             {
@@ -58,9 +58,10 @@ namespace WpfTicketera
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
             CargarDatosGrilla();
+            ObtenerDatosTicket();
 
-            //Cargamos el combo de Materiales
-            cboCliente.ItemsSource = datos.Cliente.ToList();
+            //Cargamos el combo de Clientes
+            cboCliente.ItemsSource = datos.Clientes.ToList();
             cboCliente.DisplayMemberPath = "Nombre" + " " + "Apellido";
             cboCliente.SelectedValuePath = "Id_Cliente";
         }
@@ -68,15 +69,14 @@ namespace WpfTicketera
         public void ObtenerDatosTicket()
         {
             //trae la letra de la primera caja disponible
-            var linqLetraTicket = (from p in datos.Caja
+            var linqLetraTicket = (from p in datos.Cajas
                                    where p.Estado == "D"
                                    orderby p.Codigo ascending
                                    select p.Codigo).Take(1);
-
             letraTicket = linqLetraTicket.ToList()[0].ToString();
 
             //trae el id de la primera caja disponible
-            var linqIdCaja = (from p in datos.Caja
+            var linqIdCaja = (from p in datos.Cajas
                               where p.Estado == "D"
                               orderby p.Codigo ascending
                               select p.Id_Caja).Take(1);
@@ -85,14 +85,15 @@ namespace WpfTicketera
 
             intIdCaja = Int32.Parse(idCaja);
 
+            DateTime startDateTime = DateTime.Today;
+
             //trae el numero de ticket a asociar a la caja disponible
-            int linqNroTicket = (from p in datos.Ticket
-                                 where p.Id_Caja == intIdCaja && p.Fecha == DateTime.Now
-                                 select p).Count() + 1;
-            string nroTicket = linqNroTicket.ToString();
+            int linqNroTicket = (from p in datos.Tickets
+                                 where (p.Id_Caja == intIdCaja && p.Fecha == DateTime.Today)
+                                 select p).Count();
+            string nroTicket = (linqNroTicket + 1).ToString();
 
             nroLetraTicket = letraTicket + "" + nroTicket;
-
 
         }
 
@@ -102,9 +103,11 @@ namespace WpfTicketera
             if (dgTickets.SelectedItem != null)
             {
                 Ticket t = (Ticket)dgTickets.SelectedItem;
-                datos.Ticket.Remove(t);
+                datos.Tickets.Remove(t);
                 datos.SaveChanges();
                 CargarDatosGrilla();
+                limpiarDatos();
+                ObtenerDatosTicket();
             }
             else
                 MessageBox.Show("Debe seleccionar un Ticket de la grilla para eliminar!");
@@ -114,13 +117,18 @@ namespace WpfTicketera
         {
             if (dgTickets.SelectedItem != null)
             {
+                cboCliente.IsEnabled = false;
                 Ticket t = (Ticket)dgTickets.SelectedItem;
                 t.Nro_Ticket = txtNroTicket.Text;
                 t.Cliente = (Cliente)cboCliente.SelectedItem;
+                t.Estado = txtEstado.Text;
 
                 datos.Entry(t).State = System.Data.Entity.EntityState.Modified;
                 datos.SaveChanges();
                 CargarDatosGrilla();
+                limpiarDatos();
+                ObtenerDatosTicket();
+                cboCliente.IsEnabled = true;
             }
             else
                 MessageBox.Show("Debe seleccionar una Ticket de la grilla para modificar!");
@@ -129,14 +137,23 @@ namespace WpfTicketera
         private void btnGuardar_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             Ticket ticket = new Ticket();
-            ticket.Nro_Ticket = txtNroTicket.Text;
+            //ticket.Id_Cliente = (Ticket)cboCliente.SelectedIndex;
+            ticket.Nro_Ticket = nroLetraTicket;
+            ticket.Id_Caja = intIdCaja;
             ticket.Fecha = DateTime.Now;
             ticket.Estado = "P";
-            ticket.Cliente = (Cliente)cboCliente.SelectedItem;
-            ticket.Id_Caja = intIdCaja;
-
-            datos.Ticket.Add(ticket);
+            datos.Tickets.Add(ticket);
             datos.SaveChanges();
+            limpiarDatos();
+            ObtenerDatosTicket();
+
+        }
+
+        private void limpiarDatos()
+        {
+            txtNroTicket.Text = "";
+            txtEstado.Text = "";
+            cboCliente.SelectedIndex = -1;
         }
     }
 
