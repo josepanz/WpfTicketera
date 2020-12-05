@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTicketera"
         mc:Ignorable="d"
-        Title="Ticket Fresh" Height="600" Width="1200" ResizeMode="CanResizeWithGrip" WindowStyle="SingleBorderWindow" Background="#222" WindowStartupLocation="CenterScreen">
+        Title="Ticket Fresh" Height="600" Width="1200" ResizeMode="CanResizeWithGrip" WindowStyle="SingleBorderWindow" Background="#222" WindowStartupLocation="CenterScreen" Icon="park-tickets-couple.png">
 
 	<Grid>
 		<Grid.ColumnDefinitions>

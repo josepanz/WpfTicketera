@@ -186,6 +186,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="agregue-el-simbolo-de-la-interfaz-de-personas-de-la-persona-negra-de-cerca-con-el-signo-mas-en-un-circulo-pequeno.png" />
     <Content Include="Modelo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Modelo.edmx</DependentUpon>
@@ -196,6 +197,10 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
+    <Resource Include="Multimedia\contorno-de-persona-con-simbolo-de-rueda-dentada.png" />
+    <Resource Include="Multimedia\agregue-el-simbolo-de-la-interfaz-de-personas-de-la-persona-negra-de-cerca-con-el-signo-mas-en-un-circulo-pequeno.png" />
+    <Resource Include="park-tickets-couple.png" />
+    <Resource Include="Multimedia\park-tickets-couple.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

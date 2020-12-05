@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTicketera"
         mc:Ignorable="d"
-        Title="Gestion de Tickets" Height="550.498" Width="491.517" Loaded="Window_Loaded_1" Background="#FF333333" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True">
+        Title="Gestion de Tickets" Height="550.498" Width="491.517" Loaded="Window_Loaded_1" Background="#FF333333" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" Icon="Multimedia/contorno-de-persona-con-simbolo-de-rueda-dentada.png">
     <Canvas Margin="0,0,307,-5" Background="#FF333333">
         <GroupBox Header="Datos de  Tickets" Canvas.Left="16" Canvas.Top="10" Height="156" Width="456" RenderTransformOrigin="0.5,0.5" Foreground="White">
             <GroupBox.RenderTransform>
@@ -40,9 +40,8 @@
                 <Label Grid.Column="0" Grid.Row="2" Content="Cliente" HorizontalAlignment="Right" Margin="0,0,5,-41" Width="47" Foreground="#eee" RenderTransformOrigin="0.686,1.892" ></Label>
 
                 <TextBox Grid.Column="1" Grid.Row="0" Name="txtNroTicket" Width="188" HorizontalAlignment="Left" IsReadOnly="True" Grid.ColumnSpan="2" Margin="0,10,0,6" IsEnabled="False"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Name="txtEstado" Width="188" HorizontalAlignment="Left" IsReadOnly="True" Grid.ColumnSpan="2" Margin="0,5,0,11" />
-                <ComboBox Grid.Column="1" Grid.Row="2" Name="cboCliente" Width="188" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,0,0,-25" />
-
+                <TextBox Grid.Column="1" Grid.Row="1" Name="txtEstado" Width="188" HorizontalAlignment="Left" IsEnabled="False" Grid.ColumnSpan="2" Margin="0,5,0,11" />
+                <ComboBox Grid.Column="1" Grid.Row="2" Name="cboCliente" Width="188" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="0,0,0,-25" IsReadOnly="True" ></ComboBox>
             </Grid>
         </GroupBox>
 
@@ -50,8 +49,8 @@
             <DataGrid Name="dgTickets" MouseDoubleClick="dgTickets_MouseDoubleClick"  Margin="0,0,0,1"></DataGrid>
         </GroupBox>
 
-        <Button Name="btnEliminar" Content="Eliminar" MouseDoubleClick="btnEliminar_MouseDoubleClick_1" Canvas.Left="192" Canvas.Top="424" Height="28" Background="#FF403F3F" Foreground="White" Width="75"></Button>
-        <Button Name="btnModificar" Content="Modificar" MouseDoubleClick="btnModificar_MouseDoubleClick_1" Canvas.Left="291" Canvas.Top="424"  Height="28" Background="#FF403F3F" Foreground="White" Width="74"></Button>
-        <Button Name="btnGuardar" Content="Guardar" Canvas.Left="385" MouseDoubleClick="btnGuardar_MouseDoubleClick_1" Canvas.Top="424"  Height="28" RenderTransformOrigin="0.335,-3.087" Background="#FF403F3F" Foreground="White" Width="79"></Button>
+        <Button Name="btnEliminar" Content="Eliminar" MouseDoubleClick="btnEliminar_MouseDoubleClick_1" Canvas.Left="192" Canvas.Top="424" Height="28" Background="#FF403F3F" Foreground="White" Width="75"  IsEnabled="False"></Button>
+        <Button Name="btnModificar" Content="Modificar" MouseDoubleClick="btnModificar_MouseDoubleClick_1" Canvas.Left="291" Canvas.Top="424"  Height="28" Background="#FF403F3F" Foreground="White" Width="74" IsEnabled="False"></Button>
+        <Button Name="btnGuardar" Content="Guardar" Canvas.Left="385" MouseDoubleClick="btnGuardar_MouseDoubleClick_1" Canvas.Top="424"  Height="28" RenderTransformOrigin="0.335,-3.087" Background="#FF403F3F" Foreground="White" Width="79"  IsEnabled="True"></Button>
     </Canvas>
 </Window>

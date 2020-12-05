@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTicketera"
         mc:Ignorable="d"
-        Title="Altas de Clientes" Height="442.051" Width="695.985" Loaded="Window_Loaded" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+        Title="Altas de Clientes" Height="442.051" Width="695.985" Loaded="Window_Loaded" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Icon="agregue-el-simbolo-de-la-interfaz-de-personas-de-la-persona-negra-de-cerca-con-el-signo-mas-en-un-circulo-pequeno.png">
     <Grid Margin="0,0,0,1" Background="#FF333333">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>

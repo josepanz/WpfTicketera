@@ -35,11 +35,17 @@ namespace WpfTicketera
         {
             if (dgTickets.SelectedItem != null)
             {
+                btnGuardar.IsEnabled = false;
+                cboCliente.IsEnabled = false;
+                txtEstado.IsEnabled = true;
+                btnEliminar.IsEnabled = true;
+                btnModificar.IsEnabled = true;
                 Ticket t = (Ticket)dgTickets.SelectedItem;
                 txtNroTicket.Text = t.Nro_Ticket.ToString();
                 cboCliente.SelectedItem = t.Cliente;
                 intIdCaja = (int)t.Id_Caja;
                 nroLetraTicket = t.Nro_Ticket;
+
             }
         }
 
@@ -62,7 +68,7 @@ namespace WpfTicketera
 
             //Cargamos el combo de Clientes
             cboCliente.ItemsSource = datos.Clientes.ToList();
-            cboCliente.DisplayMemberPath = "Nombre" + " " + "Apellido";
+            cboCliente.DisplayMemberPath = "Nombre";
             cboCliente.SelectedValuePath = "Id_Cliente";
         }
 
@@ -108,6 +114,11 @@ namespace WpfTicketera
                 CargarDatosGrilla();
                 limpiarDatos();
                 ObtenerDatosTicket();
+                cboCliente.IsEnabled = true;
+                txtEstado.IsEnabled = false;
+                btnEliminar.IsEnabled = false;
+                btnModificar.IsEnabled = false;
+                btnGuardar.IsEnabled = true;
             }
             else
                 MessageBox.Show("Debe seleccionar un Ticket de la grilla para eliminar!");
@@ -117,7 +128,6 @@ namespace WpfTicketera
         {
             if (dgTickets.SelectedItem != null)
             {
-                cboCliente.IsEnabled = false;
                 Ticket t = (Ticket)dgTickets.SelectedItem;
                 t.Nro_Ticket = txtNroTicket.Text;
                 t.Cliente = (Cliente)cboCliente.SelectedItem;
@@ -128,7 +138,11 @@ namespace WpfTicketera
                 CargarDatosGrilla();
                 limpiarDatos();
                 ObtenerDatosTicket();
+                CargarDatosGrilla();
                 cboCliente.IsEnabled = true;
+                txtEstado.IsEnabled = false;
+                btnEliminar.IsEnabled = false;
+                btnModificar.IsEnabled = false;
             }
             else
                 MessageBox.Show("Debe seleccionar una Ticket de la grilla para modificar!");
@@ -136,16 +150,27 @@ namespace WpfTicketera
 
         private void btnGuardar_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-            Ticket ticket = new Ticket();
-            //ticket.Id_Cliente = (Ticket)cboCliente.SelectedIndex;
-            ticket.Nro_Ticket = nroLetraTicket;
-            ticket.Id_Caja = intIdCaja;
-            ticket.Fecha = DateTime.Now;
-            ticket.Estado = "P";
-            datos.Tickets.Add(ticket);
-            datos.SaveChanges();
-            limpiarDatos();
-            ObtenerDatosTicket();
+            if (ValidarDatos()== true)
+            {
+                Ticket ticket = new Ticket();
+                Cliente cliente = (Cliente)cboCliente.SelectedItem;
+                ticket.Id_Cliente = cliente.Id_Cliente;
+                ticket.Nro_Ticket = nroLetraTicket;
+                ticket.Id_Caja = intIdCaja;
+                ticket.Fecha = DateTime.Now;
+                ticket.Estado = "P";
+                datos.Tickets.Add(ticket);
+                datos.SaveChanges();
+                limpiarDatos();
+                CargarDatosGrilla();
+                ObtenerDatosTicket();
+                txtEstado.IsEnabled = false;
+                cboCliente.IsEnabled = true;
+                btnModificar.IsEnabled = false;
+                btnEliminar.IsEnabled = false;
+            }
+            else
+                MessageBox.Show("Debe seleccionar un Cliente para poder cargar el Ticket!");
 
         }
 
@@ -154,6 +179,18 @@ namespace WpfTicketera
             txtNroTicket.Text = "";
             txtEstado.Text = "";
             cboCliente.SelectedIndex = -1;
+        }
+
+        private bool ValidarDatos()
+        {
+            if (cboCliente.SelectedIndex == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 
