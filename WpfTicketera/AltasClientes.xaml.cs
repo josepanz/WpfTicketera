@@ -102,6 +102,7 @@ namespace WpfTicketera
                 await ClienteAPI.EliminarCliente(clienteSeleccionada);
                 ObtenerDatos();
                 Limpiar();
+                btnAgregar.IsEnabled = true;
             }
             else
                 MessageBox.Show("Debe seleccionar primeramente el cliente a eliminar ");
