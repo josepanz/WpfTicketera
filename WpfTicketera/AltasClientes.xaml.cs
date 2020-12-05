@@ -103,6 +103,8 @@ namespace WpfTicketera
                 ObtenerDatos();
                 Limpiar();
                 btnAgregar.IsEnabled = true;
+                btnEliminar.IsEnabled = false;
+                btnModificar.IsEnabled = false;
             }
             else
                 MessageBox.Show("Debe seleccionar primeramente el cliente a eliminar ");
